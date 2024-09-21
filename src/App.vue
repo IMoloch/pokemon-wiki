@@ -1,47 +1,35 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+  <div class="flex flex-col h-screen">
+    <!-- Header -->
+    <header class="flex items-center h-14 px-4 border-b border-gray-300 sm:h-16 md:px-6 lg:px-8">
+      <div>
+        <a class="flex items-center gap-2 font-semibold" href="#">
+          <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="40" height="40" />
+        </a>
+      </div>
+      <nav class="ml-auto space-x-4 flex items-center h-10 sm:space-x-6">
+        <RouterLink :to="{ name: 'Login' }"> Login </RouterLink>
+        <RouterLink :to="{ name: 'Singup' }"> Sign Up </RouterLink>
+        <RouterLink :to="{ name: 'Home' }"> Home </RouterLink>
+        <RouterLink :to="{ name: 'Info' }"> PokeInfo </RouterLink>
+        <RouterLink :to="{ name: 'Random' }"> Random Poke </RouterLink>
+        <RouterLink :to="{ name: 'Contact' }"> Contact </RouterLink>
+      </nav>
+    </header>
+    <!-- Fin Header -->
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+    <!-- Main -->
+    <main class="flex-1 flex">
+      <RouterView />
+    </main>
+    <!-- Fin Main -->
 
-  <main>
-    <TheWelcome />
-  </main>
+    <!-- Footer -->
+    <footer class="flex items-center h-14 px-4 border-t border-gray-300 sm:h-16 md:px-6 lg:px-8">
+      <p class="flex-1 text-sm text-gray-500 text-center">
+        © 20xx Acme Corporation. Derechos reservados
+      </p>
+    </footer>
+    <!-- Fin Footer -->
+  </div>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
