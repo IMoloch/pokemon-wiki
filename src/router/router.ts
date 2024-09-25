@@ -1,9 +1,9 @@
-import Contact from '@/views/Contact.vue'
+import Contact from '@/views/ContactPage.vue'
 import HomePage from '@/views/HomePage.vue'
-import Login from '@/views/Login.vue'
+import Login from '@/views/LoginPage.vue'
 import PokeInfo from '@/views/PokeInfo.vue'
 import RandomPoke from '@/views/RandomPoke.vue'
-import Singup from '@/views/Singup.vue'
+import Singup from '@/views/SingupPage.vue'
 import { createMemoryHistory, createRouter } from 'vue-router'
 
 const routes = [
