@@ -4,16 +4,29 @@ declare global {
   interface Pokemon {
     name: string,
     image: string,
-    stats: Stat[]
+    stats: Stat[],
+    types: Type[],
+    matchUps?: MatchUp[],
   }
   
   interface Stat {
-    base_stat: number,
     name: string,
+    base_stat: number,
+  }
+
+  interface Type {
+    name: string,
+    imgUrl: string,
+  }
+
+  interface MatchUp {
+    name: string,
+    score: number,
+    imgUrl?: string,
   }
 
   interface User {
     email: string,
-    password: string
+    password: string,
   }
 }
