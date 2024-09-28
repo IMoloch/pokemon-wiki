@@ -10,6 +10,20 @@
       <RouterLink :to="{ name: 'Info' }"> PokeInfo </RouterLink>
       <RouterLink :to="{ name: 'Random' }"> Random Poke </RouterLink>
       <RouterLink :to="{ name: 'Contact' }"> Contact </RouterLink>
+      <button @click="logOut"> Cerrar Sesión</button>
     </nav>
   </header>
 </template>
+
+<script setup lang="ts">
+import router from '@/router/router';
+import { firebase } from '@/utils/firebase.service';
+
+const logOut = () => {
+  firebase.signOut().then((res) => {
+    setTimeout(() => {
+      router.push({name: 'Login'});
+    }, 500);
+  })
+}
+</script>

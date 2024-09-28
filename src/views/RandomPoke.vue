@@ -24,7 +24,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import router from '@/router/router';
 import { ref } from 'vue';
 import axios from 'axios';
@@ -38,7 +38,7 @@ const nameButton = ref('Mostrar Pokémon');
 const pokemonRandom = async () => {
   // Generar un ID aleatorio entre 1 y 1010 (cantidad de Pokémon actuales)
   const randomID = Math.floor(Math.random() * 1025) + 1;
-  pokemonID.value = randomID;
+  pokemonID.value = randomID.toString();
   try {
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonID.value}`);
     const pokeApi = response.data;
@@ -54,7 +54,7 @@ const pokemonRandom = async () => {
 const pokeInfoRouter = () => router.push({ name: 'Info', params: { id: pokemonID.value } });
 </script>
 
-<style>
+<style scoped>
 .container {
   margin-top: 15px;
   display: flex;
