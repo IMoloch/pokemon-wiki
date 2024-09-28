@@ -1,6 +1,7 @@
+/* eslint-disable no-useless-catch */
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, } from "firebase/auth";
+import { initializeApp } from 'firebase/app';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 // Your web app's Firebase configuration
 const firebaseConfig = JSON.parse(import.meta.env.VITE_FIREBASE_CONFIG);
@@ -10,23 +11,32 @@ const app = initializeApp(firebaseConfig);
 
 const firebase = {
   auth: getAuth(app),
-  signIn: function (user: User) {
-    const result = signInWithEmailAndPassword(
-      this.auth,
-      user.email,
-      user.password
-    );
-    return result;
+
+  signIn: async function (user: User) {
+    try {
+      const result = await signInWithEmailAndPassword(this.auth, user.email, user.password);
+      return result;
+    } catch (error) {
+      throw error;
+    }
   },
 
-  signUp: function async (user: User) {
-    return createUserWithEmailAndPassword(this.auth, user.email, user.password)
+  signUp: async function (user: User) {
+    try {
+      const res = await createUserWithEmailAndPassword(this.auth, user.email, user.password);
+      return res;
+    } catch (error) {
+      throw error;
+    }
   },
 
-  signOut: function () {
-    this.auth.signOut();
+  signOut: async function () {
+    try {
+      this.auth.signOut();
+    } catch (error) {
+      throw error;
+    }
   },
-
-}
+};
 
 export { firebase };
