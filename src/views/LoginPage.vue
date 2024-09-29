@@ -23,15 +23,16 @@
       <button class="w-full bg-blue-500 p-2 rounded hover:bg-blue-600" type="submit">Iniciar Sesión</button>
     </form>
     <p v-if="message" class="mt-4 text-green-600">{{ message }}</p>
-    <router-link class="text-blue-500 mt-4 inline-block" :to="{ name: 'Singup' }">No tienes cuenta? Regístrate</router-link>
+    <router-link class="text-blue-500 mt-4 inline-block" :to="{ name: 'Signup' }">No tienes cuenta? Regístrate</router-link>
   </div>
 </template>
 
 <script setup lang="ts">
 import router from '@/router/router';
-import { firebase } from '@/utils/firebase.service';
+import { Firebase } from '@/utils/firebase.service';
 import { ref } from 'vue';
 
+const firebase = new Firebase()
 const user = ref<User>({ email: '', password: '' });
 const message = ref<string>('');
 
