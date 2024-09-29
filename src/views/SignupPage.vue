@@ -30,9 +30,10 @@
 
 <script setup lang="ts">
 import router from '@/router/router';
-import { firebase } from '@/utils/firebase.service';
+import { Firebase } from '@/utils/firebase.service';
 import { ref } from 'vue';
 
+const firebase = new Firebase()
 const user = ref<User>({ email: '', password: '' });
 const message = ref<string>('');
 

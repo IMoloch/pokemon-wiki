@@ -17,13 +17,11 @@
 
 <script setup lang="ts">
 import router from '@/router/router';
-import { firebase } from '@/utils/firebase.service';
+import { Firebase } from '@/utils/firebase.service';
+
+const firebase = new Firebase()
 
 const logOut = () => {
-  firebase.signOut().then((res) => {
-    setTimeout(() => {
-      router.push({name: 'Login'});
-    }, 500);
-  })
+  firebase.signOut()
 }
 </script>
