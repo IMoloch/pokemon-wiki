@@ -1,6 +1,7 @@
 # Pokemon-wiki
 
-Página sencilla que muestra la información de un Pokemón utilizando la api de See [PokeApi](https://pokeapi.co/)
+Página sencilla que muestra la información de un Pokemón utilizando la api de [PokeApi](https://pokeapi.co/)
+Tambien posee una pagina que genera un pokemon aleatorio, permitiendo versus stats al hacer click sobre él.
 
 ## Tecnologías​ 🛠️
 
@@ -18,11 +19,21 @@ Visual Studio Code ( Editor recomendado ) ✔️
 
 https://code.visualstudio.com/
 
+## Clonar el proyecto
+
+```sh
+git clone https://github.com/IMoloch/pokemon-wiki.git
+```
+
 ## Vista Proyecto
 
-See [Ver Proyecto] (https://pokemonwiki-moloch.netlify.app)
+[Ver Proyecto](https://pokemonwiki-moloch.netlify.app)
 
-![alt text](./readme_assets/image.png)
+Página Info de Pokemon
+![alt text](./readme_assets/pokeInfo.png)
+
+Página Pokemon Random
+![alt text](./readme_assets/randomPoke.png)
 
 ## Customize configuration
 
