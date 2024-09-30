@@ -1,14 +1,28 @@
-# parcial2
+# Pokemon-wiki
 
-This template should help get you started developing with Vue 3 in Vite.
+Página sencilla que muestra la información de un Pokemón utilizando la api de See [PokeApi](https://pokeapi.co/)
 
-## Recommended IDE Setup
+## Tecnologías​ 🛠️
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+Html
 
-## Type Support for `.vue` Imports in TS
+Css
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+Tailwind
+
+Typescript
+
+Vue3
+
+Visual Studio Code ( Editor recomendado ) ✔️
+
+https://code.visualstudio.com/
+
+## Vista Proyecto
+
+See [Ver Proyecto] (https://pokemonwiki-moloch.netlify.app)
+
+![alt text](./readme_assets/image.png)
 
 ## Customize configuration
 
@@ -30,16 +44,4 @@ npm run dev
 
 ```sh
 npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
 ```
