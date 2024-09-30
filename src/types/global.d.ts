@@ -2,6 +2,7 @@ export {}
 
 declare global {
   interface Pokemon {
+    id: number,
     name: string,
     image: string,
     stats: Stat[],

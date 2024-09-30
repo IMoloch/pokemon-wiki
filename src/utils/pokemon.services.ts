@@ -1,32 +1,33 @@
+/* eslint-disable no-useless-catch */
 import axios from 'axios';
 
 export class PokemonService {
-  pokemonData: Pokemon = { name: '', image: '', stats: [], types: [], matchUps: [] };
+  pokemonData: Pokemon = { id: 0, name: '', image: '', stats: [], types: [], matchUps: [] };
   BASE_URL: string = import.meta.env.VITE_PKMN_BASEURL;
   allTypes: any[] = [];
 
   constructor() {}
 
-  async getFormattedData(id: string | string[]) {
+  async getFormattedData(pokeId: string | string[]) {
     try {
-      this.pokemonData = await this.getPokeInfo(id);
+      this.pokemonData = await this.getPokeInfo(pokeId);
       this.pokemonData.matchUps = await this.getAllTypes();
       for (const type of this.pokemonData.types) {
         type.imgUrl = await this.getTypeImg(type.name);
         await this.getMatchUps(type.name);
       }
     } catch (error) {
-      console.log(error);
       throw error;
     }
     return this.pokemonData;
   }
 
-  async getPokeInfo(id: string | string[]) {
+  async getPokeInfo(pokeId: string | string[]) {
     try {
-      const res = await axios.get(this.BASE_URL + '/pokemon/' + id);
+      const res = await axios.get(this.BASE_URL + '/pokemon/' + pokeId);
       // Destrucutramos la respuesta para que se acomode a las interfaces
       const {
+        id,
         name,
         sprites: {
           other: {
@@ -43,9 +44,8 @@ export class PokemonService {
       const formattedTypes = types.map((type: any) => ({
         name: type.type.name,
       }));
-      return { name, image: front_default, stats: baseStats, types: formattedTypes };
+      return { id, name, image: front_default, stats: baseStats, types: formattedTypes };
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -64,7 +64,6 @@ export class PokemonService {
       }
       return formattedTypes;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -74,7 +73,6 @@ export class PokemonService {
       const res = await axios.get(this.BASE_URL + '/type/' + type);
       return res.data.sprites['generation-ix']['scarlet-violet']['name_icon'];
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -92,7 +90,6 @@ export class PokemonService {
         no_damage_to.find((enemyType: any) => enemyType.name === pkmType.name) ? (pkmType.score -= 2) : null;
       });
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
