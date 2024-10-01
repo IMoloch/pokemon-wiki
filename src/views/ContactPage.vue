@@ -22,6 +22,7 @@
             <label for="email" class="leading-7 text-sm text-gray-600">Email</label>
             <input
               v-model="email"
+              :disabled="loading"
               type="email"
               id="email"
               name="email"
@@ -31,15 +32,17 @@
           <div class="relative mb-4">
             <label for="message" class="leading-7 text-sm text-gray-600">Message</label>
             <textarea
+              :disabled="loading"
               v-model="message"
               id="message"
               name="message"
               class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
             ></textarea>
           </div>
-          <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" @click="sendMail">
+          <button :disabled="!email.trim() || !message.trim() || loading" class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none rounded text-lg" @click="sendMail">
             Enviar
           </button>
+          <p class="leading-relaxed mt-5 text-gray-600">{{outputMsg}}</p>
         </div>
       </div>
     </div>
@@ -53,19 +56,30 @@ import { ref } from 'vue';
 
 const email = ref('');
 const message = ref('');
+const loading = ref(false);
+const outputMsg = ref ('');
 
 const sendMail = async () => {
+  loading.value = true
+  outputMsg.value = "Enviando email, por favor, espere"
   const body = {
     email: email.value,
     message: message.value,
   };
   await axios
-    .post(import.meta.env.VITE_EMAIL_BASEURL + '/api/email', body)
-    .then((res) => {
+  .post(import.meta.env.VITE_EMAIL_BASEURL + '/api/email', body)
+  .then((res) => {
+      outputMsg.value = `Email enviado con exito a ${email.value}`
+      email.value = ''
+      message.value = ''
       console.log(res.data);
     })
     .catch((err) => {
+      outputMsg.value = "Ha ocurrido un error, intente nuevamente"
       console.log(err);
-    });
+    })
+    .finally (() => {
+      loading.value = false
+    })
 };
 </script>
