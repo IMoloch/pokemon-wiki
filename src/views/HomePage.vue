@@ -24,7 +24,7 @@
                 <div
                   class="absolute inset-x-10 bottom-0 top-10 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl"
                 >
-                  <img class="size-full object-cover object-top w-full" src="@/assets/img/ash-pikachu.png" alt="" />
+                  <img class="size-full object-cover object-top w-full" src="@/assets/img/ash-pikachu.webp" alt="" />
                 </div>
               </div>
             </div>

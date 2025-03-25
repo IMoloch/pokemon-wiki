@@ -25,9 +25,4 @@ declare global {
     score: number,
     imgUrl?: string,
   }
-
-  interface User {
-    email: string,
-    password: string,
-  }
 }

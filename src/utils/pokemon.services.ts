@@ -24,7 +24,7 @@ export class PokemonService {
 
   async getPokeInfo(pokeId: string | string[]) {
     try {
-      const res = await axios.get(this.BASE_URL + '/pokemon/' + pokeId);
+      const res = await axios.get(this.BASE_URL + 'pokemon/' + pokeId);
       // Destrucutramos la respuesta para que se acomode a las interfaces
       const {
         id,
@@ -52,16 +52,13 @@ export class PokemonService {
 
   async getAllTypes() {
     try {
-      const res = await axios.get(this.BASE_URL + '/type');
+      const res = await axios.get(this.BASE_URL + 'type');
       const { results } = res.data;
       results.splice(-2);
       const formattedTypes = results.map((type: any) => ({
         name: type.name,
         score: 0,
       }));
-      for (const type of formattedTypes) {
-        type.imgUrl = await this.getTypeImg(type.name);
-      }
       return formattedTypes;
     } catch (error) {
       throw error;
@@ -70,7 +67,7 @@ export class PokemonService {
 
   async getTypeImg(type: string) {
     try {
-      const res = await axios.get(this.BASE_URL + '/type/' + type);
+      const res = await axios.get(this.BASE_URL + 'type/' + type);
       return res.data.sprites['generation-ix']['scarlet-violet']['name_icon'];
     } catch (error) {
       throw error;
@@ -79,7 +76,7 @@ export class PokemonService {
 
   async getMatchUps(type: string) {
     try {
-      const res = await axios.get(this.BASE_URL + '/type/' + type);
+      const res = await axios.get(this.BASE_URL + 'type/' + type);
       const { double_damage_from, double_damage_to, half_damage_from, half_damage_to, no_damage_from, no_damage_to } = res.data.damage_relations;
       this.pokemonData.matchUps?.forEach((pkmType) => {
         double_damage_from.find((enemyType: any) => enemyType.name === pkmType.name) ? (pkmType.score -= 1) : null;

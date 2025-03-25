@@ -63,7 +63,6 @@ const pokeInfoRouter = () => router.push({ name: 'Info', params: { id: pokemonID
   min-height: calc(100vh - 200px);
   /* Ajustamos el tamaño para dejar espacio para el footer */
   max-width: 100%;
-  /*Para que el tamaño del contenido quede bien centrado*/
 }
 
 /* Estilo para el recuadro verde */
